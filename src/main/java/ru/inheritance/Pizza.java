@@ -6,4 +6,3 @@ public class Pizza {
         return "Just tasty Pizza";
     }
 }
-//
