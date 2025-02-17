@@ -2,7 +2,7 @@ package ru.inheritance;
 
 public class IceCreamPlusJamPlusNuts extends IceCreamPlusJam {
 
-    private final int NUTS_PRICE = 25;
+    private static final int NUTS_PRICE = 25;
 
     public IceCreamPlusJamPlusNuts(int weight) {
         super(weight);
