@@ -1,6 +1,14 @@
 package ru.pojo;
 
 public class Book {
+    private String name;
+    private int count;
+
+    public Book(String name, int count) {
+        this.name = name;
+        this.count = count;
+    }
+
     public String getName() {
         return name;
     }
@@ -14,14 +22,6 @@ public class Book {
     }
 
     public void setCount(int count) {
-        this.count = count;
-    }
-
-    private String name;
-    private int count;
-
-    public Book(String name, int count) {
-        this.name = name;
         this.count = count;
     }
 }
