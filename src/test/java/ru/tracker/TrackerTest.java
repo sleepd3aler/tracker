@@ -1,6 +1,7 @@
 package ru.tracker;
 
 import org.junit.Test;
+
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 public class TrackerTest {
