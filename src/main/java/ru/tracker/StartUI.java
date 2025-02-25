@@ -5,10 +5,11 @@ import java.time.format.DateTimeFormatter;
 
 public class StartUI {
     public static void main(String[] args) {
-        Item item = new Item();
+        Item item = new Item(13, "Repair");
         LocalDateTime time = item.getCreated();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MMMM.EEEE.yyyy HH:mm:ss");
         String dateTime = time.format(formatter);
         System.out.println(dateTime);
+        System.out.println(item);
     }
 }
