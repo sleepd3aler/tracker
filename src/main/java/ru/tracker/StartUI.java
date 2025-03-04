@@ -28,7 +28,9 @@ public class StartUI {
                 }
             } else if (select == 2) {
                 System.out.println("== Изменение заявки ==");
+                System.out.println("Введите ID заявки: ");
                 int id = Integer.parseInt(scanner.nextLine());
+                System.out.println("Введите имя новой заявки: ");
                 String newName = scanner.nextLine();
                 Item newItem = new Item(newName);
                 if (tracker.replace(id, newItem)) {
