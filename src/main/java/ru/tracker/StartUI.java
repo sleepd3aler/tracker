@@ -27,9 +27,8 @@ public class StartUI {
                     System.out.println("Хранилище еще не содержит заявок");
                 }
             } else if (select == 2) {
-                System.out.println("== Выберите заявку для изменения ==");
+                System.out.println("== Изменение заявки ==");
                 int id = Integer.parseInt(scanner.nextLine());
-                System.out.println("Введите новое имя заявки: ");
                 String newName = scanner.nextLine();
                 Item newItem = new Item(newName);
                 if (tracker.replace(id, newItem)) {
@@ -39,8 +38,7 @@ public class StartUI {
                 }
 
             } else if (select == 3) {
-                System.out.println("Выберите заявку для удаления: ");
-
+                System.out.println("== Выберите заявку для удаления ==");
             } else if (select == 4) {
                 System.out.println("Введите id заявки для просмотра статуса: ");
 
