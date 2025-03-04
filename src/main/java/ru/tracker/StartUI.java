@@ -18,11 +18,13 @@ public class StartUI {
                 System.out.println("Добавлена заявка: " + item);
             } else if (select == 1) {
                 System.out.println("=== Вывод всех заявок ===");
-                if (tracker.findAll().length == 0) {
-                    System.out.println("Хранилище еще не содержит заявок");
-                }
-                for (Item item : tracker.findAll()) {
+                Item[] items = tracker.findAll();
+                if (items.length > 0) {
+                    for (Item item : items) {
                         System.out.println(item);
+                    }
+                } else {
+                    System.out.println("Хранилище еще не содержит заявок");
                 }
             } else if (select == 2) {
                 System.out.println("Выберите заявку для изменения: ");
