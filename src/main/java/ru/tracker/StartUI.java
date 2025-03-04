@@ -28,6 +28,17 @@ public class StartUI {
                 }
             } else if (select == 2) {
                 System.out.println("Выберите заявку для изменения: ");
+                int id = Integer.parseInt(scanner.nextLine());
+                Item currentItem = tracker.findById(id);
+                if (currentItem != null) {
+                    System.out.println("Введите имя новой заявки: ");
+                    String newName = scanner.nextLine();
+                    Item newItem = new Item(newName);
+                    tracker.replace(id, newItem);
+                    System.out.println("Заявка: " + currentItem + ", заменена на: " + newItem);
+                } else {
+                    System.out.println("Такой заявки не существует");
+                }
 
             } else if (select == 3) {
                 System.out.println("Выберите заявку для удаления: ");
