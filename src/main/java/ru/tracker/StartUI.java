@@ -9,36 +9,32 @@ public class StartUI {
             showMenu();
             System.out.print("Выбрать: ");
             int select = Integer.parseInt(scanner.nextLine());
-            switch (select) {
-                case 0 -> {
-                    System.out.println("Введите название заявки: ");
-                    run = false;
-                }
-                case 1 -> {
-                    System.out.println("Список заявок: ");
-                    run = false;
-                }
-                case 2 -> {
-                    System.out.println("Выберите заявку для изменения: ");
-                    run = false;
-                }
-                case 3 -> {
-                    System.out.println("Выберите заявку для удаления: ");
-                    run = false;
-                }
-                case 4 -> {
-                    System.out.println("Введите id заявки для просмотра статуса: ");
-                    run = false;
-                }
-                case 5 -> {
-                    System.out.println("Введите название заявки для просмотра статуса: ");
-                    run = false;
-                }
-                case 6 -> {
-                        System.out.println("Программа завершена!");
-                        run = false;
-                }
-                default -> System.out.println("Выберите Пункт меню!");
+            if (select == 0) {
+                System.out.println("==Создание заявки==");
+                System.out.println("Введите имя: ");
+                String name = scanner.nextLine();
+                Item item = new Item(name);
+                tracker.add(item);
+                System.out.println("Добавлена заявка: " + item);
+            } else if (select == 1) {
+
+                run = false;
+            } else if (select == 2) {
+                System.out.println("Выберите заявку для изменения: ");
+
+            } else if (select == 3) {
+                System.out.println("Выберите заявку для удаления: ");
+
+            } else if (select == 4) {
+                System.out.println("Введите id заявки для просмотра статуса: ");
+
+            } else if (select == 5) {
+                System.out.println("Введите название заявки для просмотра статуса: ");
+            } else if (select == 6) {
+                System.out.println("Программа завершена!");
+                run = false;
+            } else {
+                run = false;
             }
         }
     }
