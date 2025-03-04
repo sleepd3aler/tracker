@@ -18,7 +18,9 @@ public class StartUI {
                 System.out.println("Добавлена заявка: " + item);
             } else if (select == 1) {
                 System.out.println("Список заявок: ");
-
+                for (Item item : tracker.findAll()) {
+                    System.out.println(item);
+                }
             } else if (select == 2) {
                 System.out.println("Выберите заявку для изменения: ");
 
