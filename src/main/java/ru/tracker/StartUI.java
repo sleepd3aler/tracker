@@ -40,7 +40,7 @@ public class StartUI {
                 }
 
             } else if (select == 3) {
-                System.out.println("== Выберите заявку для удаления ==");
+                System.out.println("== Удаление заявки ==");
                 int deleteId = Integer.parseInt(scanner.nextLine());
                 boolean isValid = tracker.findById(deleteId) != null;
                 if (isValid) {
