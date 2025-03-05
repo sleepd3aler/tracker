@@ -61,14 +61,16 @@ public class StartUI {
                     System.out.println("Такой заявки не существует");
                 }
             } else if (select == 5) {
-                System.out.println("== Просмотр заявки ==");
+                System.out.println("== Просмотр заявок ==");
                 System.out.println("Введите название заявки для просмотра статуса: ");
                 String currentName = scanner.nextLine();
-                Item[] items = tracker.findByName(currentName);
-                if (items.length == 0) {
+                Item[] foundedItems = tracker.findByName(currentName);
+                if (foundedItems.length == 0) {
                     System.out.println("Заявки не существует");
                 } else {
-                    System.out.println(items[0]);
+                    for (Item item : foundedItems) {
+                        System.out.println(item);
+                    }
                 }
             } else if (select == 6) {
                 System.out.println("Программа завершена!");
