@@ -51,7 +51,7 @@ public class StartUI {
                     System.out.println("Такой заявки не существует");
                 }
             } else if (select == 4) {
-                System.out.println("==Просмотр заявки");
+                System.out.println("== Просмотр заявки ==");
                 System.out.println("Введите id заявки для просмотра заявки: ");
                 int currentId = Integer.parseInt(scanner.nextLine());
                 boolean isValid = tracker.findById(currentId) != null;
