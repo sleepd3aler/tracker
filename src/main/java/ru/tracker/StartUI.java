@@ -41,6 +41,7 @@ public class StartUI {
 
             } else if (select == 3) {
                 System.out.println("== Удаление заявки ==");
+                System.out.println("Введите ID заявки:");
                 int deleteId = Integer.parseInt(scanner.nextLine());
                 boolean isValid = tracker.findById(deleteId) != null;
                 if (isValid) {
@@ -50,8 +51,16 @@ public class StartUI {
                     System.out.println("Такой заявки не существует");
                 }
             } else if (select == 4) {
-                System.out.println("Введите id заявки для просмотра статуса: ");
-
+                System.out.println("==Просмотр заявки");
+                System.out.println("Введите id заявки для просмотра заявки: ");
+                int currentId = Integer.parseInt(scanner.nextLine());
+                boolean isValid = tracker.findById(currentId) != null;
+                if (isValid) {
+                    Item item = tracker.findById(currentId);
+                    System.out.println(item);
+                } else {
+                    System.out.println("Такой заявки не существует");
+                }
             } else if (select == 5) {
                 System.out.println("Введите название заявки для просмотра статуса: ");
             } else if (select == 6) {
