@@ -66,7 +66,7 @@ public class StartUI {
                 String currentName = scanner.nextLine();
                 Item[] foundedItems = tracker.findByName(currentName);
                 if (foundedItems.length == 0) {
-                    System.out.println("Заявка не найдена");
+                    System.out.println("Заявки не найдены");
                 } else {
                     for (Item item : foundedItems) {
                         System.out.println(item);
