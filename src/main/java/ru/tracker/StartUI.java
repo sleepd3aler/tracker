@@ -55,15 +55,21 @@ public class StartUI {
                 System.out.println("Введите id заявки для просмотра заявки: ");
                 int currentId = Integer.parseInt(scanner.nextLine());
                 Item currentItem = tracker.findById(currentId);
-                boolean isValid = currentItem != null;
-                if (isValid) {
+                if (currentItem != null) {
                     System.out.println(currentItem);
                 } else {
                     System.out.println("Такой заявки не существует");
                 }
             } else if (select == 5) {
                 System.out.println("== Просмотр заявки ==");
-
+                System.out.println("Введите название заявки для просмотра статуса: ");
+                String currentName = scanner.nextLine();
+                Item[] items = tracker.findByName(currentName);
+                if (items.length == 0) {
+                    System.out.println("Заявки не существует");
+                } else {
+                    System.out.println(items[0]);
+                }
             } else if (select == 6) {
                 System.out.println("Программа завершена!");
                 run = false;
