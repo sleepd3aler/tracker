@@ -11,3 +11,4 @@ public class Bus implements Vehicle {
         System.out.println("Вместимость пассажиров: " + passengers);
     }
 }
+//

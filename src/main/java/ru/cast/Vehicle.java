@@ -5,3 +5,4 @@ public interface Vehicle {
 
     void passengers(int passengers);
 }
+//
