@@ -9,6 +9,7 @@ public class TransportUsage {
         Vehicle[] vehicles = {airBus, bus, train};
         for (Vehicle vehicle : vehicles) {
             vehicle.move();
+            vehicle.passengers(30);
         }
     }
 }
