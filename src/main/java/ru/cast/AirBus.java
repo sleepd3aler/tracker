@@ -11,3 +11,4 @@ public class AirBus implements Vehicle {
         System.out.println("Вместимость пассажиров: " + passengers);
     }
 }
+//
