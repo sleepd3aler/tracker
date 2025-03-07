@@ -9,7 +9,7 @@ public class TransportUsage {
         for (Vehicle vehicle : vehicles) {
             vehicle.move();
             vehicle.passengers(30);
+            //
         }
     }
 }
-//
