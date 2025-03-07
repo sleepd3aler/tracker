@@ -9,6 +9,5 @@ public class Train implements Vehicle {
     @Override
     public void passengers(int passengers) {
         System.out.println("Вместимость пассажиров: " + passengers);
-        //
     }
 }
