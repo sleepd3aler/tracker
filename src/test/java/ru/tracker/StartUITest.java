@@ -60,4 +60,27 @@ public class StartUITest {
        Item edited = tracker.findById(item.getId());
        assertThat(edited.getName()).isNotEqualTo("edited item");
     }
+
+    @Test
+    void whenDeleteItem() {
+        Tracker tracker = new Tracker();
+        tracker.add(new Item("new item"));
+        tracker.add(new Item("another item"));
+        int id = 1;
+        String[] answers = {String.valueOf(id)};
+        StartUI.deleteItem(new MockInput(answers), tracker);
+        assertThat(tracker.findById(id)).isNull();
+    }
+
+    @Test
+    void whenDeleteItemFailed() {
+        Tracker tracker = new Tracker();
+        Item item = new Item("new item");
+        tracker.add(item);
+        tracker.add(item);
+        int key = 1;
+        String[] answers = {String.valueOf(key)};
+        StartUI.deleteItem(new MockInput(answers), tracker);
+        assertThat(item.getId()).isNotEqualTo(key);
+    }
 }
