@@ -18,3 +18,4 @@ public class MockInput implements Input {
         return Integer.parseInt(askStr(question));
     }
 }
+//
