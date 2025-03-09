@@ -6,7 +6,7 @@ public class Store {
         Product bread = new Product("Bread", 4);
         Product eggs = new Product("Eggs", 19);
 
-        Product[] prods = new Product[3];
+        Product[] prods = new Product[5];
         prods[0] = milk;
         prods[1] = bread;
         prods[2] = eggs;
@@ -28,6 +28,13 @@ public class Store {
             Product pr = prods[index];
             if (pr.getCount() > 10) {
                 System.out.println(pr.getName() + " - " + pr.getCount());
+            }
+        }
+
+        for (int index = 0; index < prods.length; index++) {
+            Product product = prods[index];
+            if (product != null) {
+                System.out.println(product.getName());
             }
         }
     }

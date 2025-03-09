@@ -4,11 +4,10 @@ import java.util.Arrays;
 
 public class DropArrays {
     public static void main(String[] args) {
-        String[] names = {"Petr", null, "Ivan", "Stepan", null};
+        String[] names = {"Petr", null, "Ivan", "Stepan", "Fedor"};
         String[] rsl = new String[names.length];
         int size = 0;
-        for (int i = 0; i < names.length; i++) {
-            String name = names[i];
+        for (String name : names) {
             if (name != null) {
                 rsl[size] = name;
                 size++;
@@ -18,5 +17,7 @@ public class DropArrays {
         for (String s : rsl) {
             System.out.println(s);
         }
+        System.arraycopy(names, 2, names, 1, 3);
+        System.out.println(Arrays.toString(names));
     }
 }

@@ -4,12 +4,12 @@ import java.util.Calendar;
 
 public class Format {
     public static void getGreeting(String name, int age) {
-        System.out.println(String.format("Привет, Я %s!, мне  %d лет", name, age));
+        System.out.printf("Привет, Я %s!, мне  %d лет%n", name, age);
     }
 
     public static void getGreetingAndDateTime(String name) {
         Calendar instance = Calendar.getInstance();
-        System.out.println(String.format("Привет, %s! Текущая дата: %tF, Текущее время: %tT", name, instance, instance));
+        System.out.printf("Привет, %s! Текущая дата: %tF, Текущее время: %tT%n", name, instance, instance);
 
     }
 
