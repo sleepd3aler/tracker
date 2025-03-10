@@ -1,5 +1,5 @@
 package ru.tracker;
-
+//
 public interface UserAction {
     String name();
 

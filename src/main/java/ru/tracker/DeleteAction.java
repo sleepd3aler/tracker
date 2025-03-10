@@ -1,5 +1,5 @@
 package ru.tracker;
-
+//
 public class DeleteAction implements UserAction {
     @Override
     public String name() {
