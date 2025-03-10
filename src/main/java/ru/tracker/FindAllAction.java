@@ -1,5 +1,5 @@
 package ru.tracker;
-//
+
 public class FindAllAction implements UserAction {
     @Override
     public String name() {
