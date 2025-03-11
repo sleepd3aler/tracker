@@ -23,14 +23,14 @@ class StartUITest {
     @Test
     void whenReplaceItem() {
         Input input = new MockInput(
-                new String[]{"0", "Item name", "1", "1", "Replaced name", "2"}
+                new String[]{"0", "1", "Replaced name", "1"}
         );
         Tracker tracker = new Tracker();
         UserAction[] actions = {
-                new CreateAction(),
                 new ReplaceAction(),
                 new ExitAction(),
         };
+        tracker.add(new Item("Item name"));
         new StartUI().init(input, tracker, actions);
         assertThat(tracker.findAll()[0].getName()).isEqualTo("Replaced name");
     }
@@ -38,14 +38,14 @@ class StartUITest {
     @Test
     void whenReplaceItemIsFailed() {
         Input input = new MockInput(
-                new String[]{"0", "Item name", "1", "2", "Replaced name", "2"}
+                new String[]{"0", "2", "Replaced name", "1"}
         );
         Tracker tracker = new Tracker();
         UserAction[] actions = {
-                new CreateAction(),
                 new ReplaceAction(),
                 new ExitAction(),
         };
+        tracker.add(new Item("Item name"));
         new StartUI().init(input, tracker, actions);
         assertThat(tracker.findAll()[0].getName()).isNotEqualTo("Replaced name");
     }
@@ -53,14 +53,14 @@ class StartUITest {
     @Test
     void whenDeleteItem() {
         Input input = new MockInput(
-                new String[]{"0", "Item name", "1", "1", "2"}
+                new String[]{"0", "1", "1"}
         );
         Tracker tracker = new Tracker();
         UserAction[] actions = {
-                new CreateAction(),
                 new DeleteAction(),
                 new ExitAction(),
         };
+        tracker.add(new Item("Item name"));
         new StartUI().init(input, tracker, actions);
         assertThat(tracker.findAll().length).isZero();
     }
@@ -68,14 +68,14 @@ class StartUITest {
     @Test
     void whenDeleteItemIsFailed() {
         Input input = new MockInput(
-                new String[]{"0", "Item name", "1", "2", "2"}
+                new String[]{"0", "2", "1"}
         );
         Tracker tracker = new Tracker();
         UserAction[] actions = {
-                new CreateAction(),
                 new DeleteAction(),
                 new ExitAction(),
         };
+        tracker.add(new Item("Item name"));
         new StartUI().init(input, tracker, actions);
         assertThat(tracker.findAll().length).isNotZero();
     }
