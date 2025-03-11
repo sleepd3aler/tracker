@@ -1,6 +1,12 @@
 package ru.tracker;
 
 public class DeleteAction implements UserAction {
+    private final Output output;
+
+    public DeleteAction(Output output) {
+        this.output = output;
+    }
+
     @Override
     public String name() {
         return "Удалить заявку";
@@ -8,14 +14,14 @@ public class DeleteAction implements UserAction {
 
     @Override
     public boolean execute(Input input, Tracker tracker) {
-        System.out.println("== Удаление заявки ==");
+        output.println("== Удаление заявки ==");
         int deleteId = input.askInt("Введите ID заявки:");
         boolean isValid = tracker.findById(deleteId) != null;
         if (isValid) {
             tracker.delete(deleteId);
-            System.out.println("Заявка №: " + deleteId + " удалена успешно");
+            output.println("Заявка №: " + deleteId + " удалена успешно");
         } else {
-            System.out.println("Такой заявки не существует");
+            output.println("Такой заявки не существует");
         }
         return true;
     }

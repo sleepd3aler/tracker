@@ -1,6 +1,12 @@
 package ru.tracker;
 
 public class ReplaceAction implements UserAction {
+    private final Output output;
+
+    public ReplaceAction(Output output) {
+        this.output = output;
+    }
+
     @Override
     public String name() {
         return "Изменить заявку";
@@ -8,14 +14,14 @@ public class ReplaceAction implements UserAction {
 
     @Override
     public boolean execute(Input input, Tracker tracker) {
-        System.out.println("== Изменение заявки ==");
+        output.println("== Изменение заявки ==");
         int id = input.askInt("Введите ID заявки: ");
         String newName = input.askStr("Введите имя новой заявки: ");
         Item newItem = new Item(newName);
         if (tracker.replace(id, newItem)) {
-            System.out.println("Замена прошла успешно, " + "Актуальная заявка: " + newItem);
+            output.println("Замена прошла успешно, " + "Актуальная заявка: " + newItem);
         } else {
-            System.out.println("Введите корректный ID: ");
+            output.println("Введите корректный ID: ");
         }
         return true;
     }
