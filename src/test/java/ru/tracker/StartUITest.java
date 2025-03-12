@@ -132,6 +132,36 @@ class StartUITest {
     }
 
     @Test
+    void whenReplaceItemTestOutputIsFailed() {
+        Output output = new MockOutput();
+        Tracker tracker = new Tracker();
+        Item one = tracker.add(new Item("test1"));
+        Item two = tracker.add(new Item("test2"));
+        String id = "3";
+        String replaceName = "New Test";
+        Input input = new MockInput(
+                new String[]{"0", id, replaceName, "1"}
+        );
+        UserAction[] actions = new UserAction[]{
+                new ReplaceAction(output),
+                new ExitAction(output)
+        };
+        new StartUI(output).init(input, tracker, actions);
+        String ln = System.lineSeparator();
+        assertThat(output.toString()).isEqualTo(
+                "Меню:" + ln
+                        + "0. Изменить заявку" + ln
+                        + "1. Завершить программу" + ln
+                        + "=== Редактирование заявки ===" + ln
+                        + "Введите корректный ID: " + ln
+                        + "Меню:" + ln
+                        + "0. Изменить заявку" + ln
+                        + "1. Завершить программу" + ln
+                        + "=== Завершение программы ===" + ln
+        );
+    }
+
+    @Test
     void whenFindAllItemsTestOutputIsSuccessfully() {
         Output output = new MockOutput();
         Tracker tracker = new Tracker();
