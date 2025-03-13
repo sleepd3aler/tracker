@@ -14,11 +14,16 @@ public class FindEl {
         return result;
     }
 
-    public static void main(String[] args) throws ElementNotFoundException {
-        String[] elements = {"Cat", "Dog", "Pig"};
+    public static boolean sent(String value, String[] abuses) {
+        return true;
+    }
+
+    public static void process(String[] values, String key, String[] abuses) {
         try {
-            indexOf(elements, "kitty");
-        } catch (ElementNotFoundException e) {
+            if (indexOf(values, key) != -1) {
+                sent(key, abuses);
+            }
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
