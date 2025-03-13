@@ -1,5 +1,5 @@
 package ru.ex;
-
+//
 public class Factorial {
     public  int calc(int number) {
         if (number < 0) {

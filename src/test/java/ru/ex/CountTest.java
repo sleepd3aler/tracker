@@ -12,7 +12,7 @@ class CountTest {
         IllegalArgumentException exception = assertThrows(
                 IllegalArgumentException.class,
                 () -> {
-                    Count.add(2, 10);
+                    Count.add(10, 2);
                 });
         assertThat(exception.getMessage()).isEqualTo("Start should be less than finish.");
     }
