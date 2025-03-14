@@ -9,14 +9,19 @@ public class UserStore {
                 break;
             }
         }
-        if (user == null) throw new UserNotFoundException("User not found");
+        if (user == null) {
+            throw new UserNotFoundException("User not found");
+        }
         return user;
     }
 
     public static boolean validate(User user) throws UserInvalidException {
         String login = user.getUsername();
-        boolean valid = user.isValid() && login.length() > 3;;
-        if (!valid) throw new UserInvalidException("User invalid");
+        boolean valid = user.isValid() && login.length() > 3;
+        ;
+        if (!valid) {
+            throw new UserInvalidException("User invalid");
+        }
         return valid;
     }
 
@@ -24,7 +29,7 @@ public class UserStore {
         User[] users = {
                 new User("Ivan Ivanov", true)
         };
-        User user = null;
+        User user;
         try {
             user = findUser(users, "Ivan Ivanov");
         } catch (UserNotFoundException e) {
@@ -35,7 +40,7 @@ public class UserStore {
                 System.out.println("This user has an access");
             }
         } catch (UserInvalidException e) {
-           throw new RuntimeException(e);
+            throw new RuntimeException(e);
         }
     }
 }
