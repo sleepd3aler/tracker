@@ -16,13 +16,11 @@ public class UserStore {
     }
 
     public static boolean validate(User user) throws UserInvalidException {
-        String login = user.getUsername();
-        boolean valid = user.isValid() && login.length() > 3;
-        ;
-        if (!valid) {
+        String username = user.getUsername();
+        if (!user.isValid() && username.length() > 3) {
             throw new UserInvalidException("User invalid");
         }
-        return valid;
+        return true;
     }
 
     public static void main(String[] args) {
@@ -36,9 +34,9 @@ public class UserStore {
             throw new RuntimeException(e);
         }
         try {
-            if (validate(user)) {
+            if (validate(user))
                 System.out.println("This user has an access");
-            }
+
         } catch (UserInvalidException e) {
             throw new RuntimeException(e);
         }
