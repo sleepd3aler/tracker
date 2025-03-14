@@ -17,7 +17,7 @@ public class UserStore {
 
     public static boolean validate(User user) throws UserInvalidException {
         String username = user.getUsername();
-        if (!user.isValid() && username.length() > 3) {
+        if (!user.isValid() || username.length() < 3) {
             throw new UserInvalidException("User invalid");
         }
         return true;
@@ -25,7 +25,7 @@ public class UserStore {
 
     public static void main(String[] args) {
         User[] users = {
-                new User("Ivan Ivanov", true)
+                new User("Ivan Ivanov", false)
         };
         User user;
         try {
@@ -33,10 +33,10 @@ public class UserStore {
             if (validate(user)) {
                 System.out.println("User is valid");
             }
-        } catch (UserNotFoundException e) {
-            throw new RuntimeException(e);
-        } catch (UserInvalidException e) {
-            throw new RuntimeException(e);
+        } catch (UserInvalidException ui) {
+            ui.printStackTrace();
+        } catch (UserNotFoundException nfe) {
+            nfe.printStackTrace();
         }
     }
 }
