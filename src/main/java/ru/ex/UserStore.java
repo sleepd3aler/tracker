@@ -30,13 +30,11 @@ public class UserStore {
         User user;
         try {
             user = findUser(users, "Ivan Ivanov");
+            if (validate(user)) {
+                System.out.println("User is valid");
+            }
         } catch (UserNotFoundException e) {
             throw new RuntimeException(e);
-        }
-        try {
-            if (validate(user))
-                System.out.println("This user has an access");
-
         } catch (UserInvalidException e) {
             throw new RuntimeException(e);
         }
