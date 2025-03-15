@@ -17,6 +17,16 @@ public class StartUI {
         boolean run = true;
         while (run) {
             showMenu(actions);
+            try {
+                int valid = input.askInt("Выбрать:");
+                if (valid < 0 || valid >= actions.length) {
+                    System.out.println("Неверный ввод, вы можете выбрать: 0 .. " + (actions.length - 1));
+                    continue;
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Пожалуйста, введите корректные данные");
+                showMenu(actions);
+            }
             int select = input.askInt("Выбрать:");
             if (select < 0 || select >= actions.length) {
                 System.out.println("Неверный ввод, вы можете выбрать: 0 .. " + (actions.length - 1));

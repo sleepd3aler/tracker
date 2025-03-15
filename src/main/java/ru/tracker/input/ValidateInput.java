@@ -8,13 +8,12 @@ public class ValidateInput extends ConsoleInput {
     @Override
     public int askInt(String question) throws NumberFormatException {
         System.out.println(question);
-        int value = -1;
-        try {
-            value = Integer.parseInt(scanner.nextLine());
-        } catch (NumberFormatException e) {
-            System.out.println("Пожалуйста, введите корректные данные");
+        if (scanner.hasNextInt()) {
+            return Integer.parseInt(scanner.nextLine());
+        } else {
+            scanner.nextLine();
+            throw new NumberFormatException("Пожалуйста, введите корректные данные");
         }
-        return value;
     }
 }
 
