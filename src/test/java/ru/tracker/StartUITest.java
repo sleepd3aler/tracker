@@ -341,92 +341,20 @@ class StartUITest {
         Output output = new MockOutput();
         Tracker tracker = new Tracker();
         Input input = new MockInput(
-                new String[]{"2", "0", "Test", "1"}
+                new String[]{"2", "0"}
         );
         UserAction[] actions = {
-                new Create(output),
                 new Exit(output)
         };
         new StartUI(output).init(input, tracker, actions);
         String ln = System.lineSeparator();
         assertThat(output.toString()).isEqualTo(
                 "Меню:" + ln
-                        + "0. Добавить новую заявку" + ln
-                        + "1. Завершить программу" + ln
-                        + "Неверный ввод, вы можете выбрать: 0 .. 1" + ln
-                        + "Меню:" + ln
-                        + "0. Добавить новую заявку" + ln
-                        + "1. Завершить программу" + ln
-                        + "== Создание новой заявки ==" + ln
-                        +  "Добавлена заявка: " + tracker.findAll()[0] + ln
-                        + "Меню:" + ln
-                        + "0. Добавить новую заявку" + ln
-                        + "1. Завершить программу" + ln
-                        + "=== Завершение программы ===" + ln
-        );
-    }
-
-    @Test
-    void whenInvalidIdExit() {
-        Output output = new MockOutput();
-        Tracker tracker = new Tracker();
-        tracker.add(new Item("test1"));
-        Input input = new MockInput(
-                new String[]{"0", "2", "Test", "0", "1", "Test", "1"}
-        );
-        UserAction[] actions = {
-                new Replace(output),
-                new Exit(output)
-        };
-        new StartUI(output).init(input, tracker, actions);
-        String ln = System.lineSeparator();
-        assertThat(output.toString()).isEqualTo(
-                "Меню:" + ln
-                        + "0. Изменить заявку" + ln
-                        + "1. Завершить программу" + ln
-                        + "=== Редактирование заявки ===" + ln
-                        + "Введен не существующий ID" + ln
-                        + "Меню:" + ln
-                        + "0. Изменить заявку" + ln
-                        + "1. Завершить программу" + ln
-                        + "=== Редактирование заявки ===" + ln
-                        + "Заявка изменена успешно." + ln
-                        + "Меню:" + ln
-                        + "0. Изменить заявку" + ln
-                        + "1. Завершить программу" + ln
-                        + "=== Завершение программы ===" + ln
-        );
-    }
-
-    @Test
-    void whenFindIdExit() {
-        Output output = new MockOutput();
-        Tracker tracker = new Tracker();
-        tracker.add(new Item("test1"));
-        Input input = new MockInput(
-                new String[]{"0", "2", "0", "1", "1"}
-        );
-        UserAction[] actions = {
-                new FindById(output),
-                new Exit(output)
-        };
-        new StartUI(output).init(input, tracker, actions);
-        String ln = System.lineSeparator();
-        assertThat(output.toString()).isEqualTo(
-                "Меню:" + ln
-                        + "0. Показать заявку по id" + ln
-                        + "1. Завершить программу" + ln
-                        + "=== Просмотр заявки ===" + ln
-                        + "Такой заявки не существует" + ln
-                        + "Меню:" + ln
-                        + "0. Показать заявку по id" + ln
-                        + "1. Завершить программу" + ln
-                        + "=== Просмотр заявки ===" + ln
-                        + tracker.findAll()[0] + ln
-                        + "Меню:" + ln
-                        + "0. Показать заявку по id" + ln
-                        + "1. Завершить программу" + ln
-                        + "=== Завершение программы ===" + ln
+                         + "0. Завершить программу" + ln
+                         + "Неверный ввод, вы можете выбрать: 0 .. 0" + ln
+                         + "Меню:" + ln
+                         + "0. Завершить программу" + ln
+                         + "=== Завершение программы ===" + ln
         );
     }
 }

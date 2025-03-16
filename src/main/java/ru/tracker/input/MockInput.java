@@ -15,13 +15,6 @@ public class MockInput implements Input {
 
     @Override
     public int askInt(String question) {
-        do {
-            try {
-                return Integer.parseInt(askStr(question));
-            } catch (NumberFormatException e) {
-                System.out.println("Пожалуйста введите корректные данные");
-            }
-        } while (true);
-
+        return Integer.parseInt(askStr(question));
     }
 }
