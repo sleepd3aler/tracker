@@ -1,5 +1,5 @@
 package ru.tracker.input;
-//
+
 public class ValidateInput extends ConsoleInput {
 
     @Override
