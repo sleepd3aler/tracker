@@ -13,5 +13,5 @@ public class ValidateInput extends ConsoleInput {
         } while (true);
     }
 }
-
+//
 
