@@ -26,7 +26,7 @@ public class Replace implements UserAction {
         if (tracker.replace(id, newItem)) {
             output.println("Заявка изменена успешно.");
         } else {
-            output.println("Введите корректный ID:");
+            output.println("Введен не существующий ID");
         }
         return true;
     }
