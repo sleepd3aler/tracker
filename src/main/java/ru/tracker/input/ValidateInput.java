@@ -7,13 +7,15 @@ public class ValidateInput extends ConsoleInput {
 
     @Override
     public int askInt(String question) throws NumberFormatException {
-        System.out.println(question);
-        if (scanner.hasNextInt()) {
-            return Integer.parseInt(scanner.nextLine());
-        } else {
-            scanner.nextLine();
-            throw new NumberFormatException("Пожалуйста, введите корректные данные");
-        }
+        do {
+            System.out.println(question);
+            try {
+                return Integer.parseInt(scanner.nextLine());
+            } catch (NumberFormatException e) {
+                System.out.println("Пожалуйста введите корректные данные");
+            }
+        } while (true);
     }
 }
+
 
