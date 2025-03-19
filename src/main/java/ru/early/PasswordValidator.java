@@ -23,25 +23,25 @@ public class PasswordValidator {
         for (char checkSymbol : checkPass) {
             if (isUpperCase(checkSymbol)) {
                 hasUpperCase = true;
-                continue;
             }
             if (isLowerCase(checkSymbol)) {
                 hasLowerCase = true;
-                continue;
             }
             if (isDigit(checkSymbol)) {
                 hasDigit = true;
-                continue;
             }
             if (!isLetterOrDigit(checkSymbol) && !isWhitespace(checkSymbol)) {
                 hasSpecial = true;
+            }
+            if (hasUpperCase && hasLowerCase && hasDigit && hasSpecial) {
                 break;
             }
         }
-        for (String simple2 : FORBIDDEN) {
-            if (password.toLowerCase().contains(simple2)) {
-                throw new IllegalArgumentException("Password shouldn't contain substrings: qwerty, 12345, password, admin, user");
-            }
+        if (password.toLowerCase().contains(FORBIDDEN[0])
+                || password.toLowerCase().contains(FORBIDDEN[1])
+                || password.toLowerCase().contains(FORBIDDEN[2]) || password.toLowerCase().contains(FORBIDDEN[3])
+                || password.toLowerCase().contains(FORBIDDEN[4])) {
+            throw new IllegalArgumentException("Password shouldn't contain substrings: qwerty, 12345, password, admin, user");
         }
         if (!hasUpperCase) {
             throw new IllegalArgumentException("Password should contain at least one uppercase letter");
