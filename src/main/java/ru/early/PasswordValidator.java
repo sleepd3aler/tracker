@@ -1,6 +1,6 @@
 package ru.early;
 
-import static java.lang.Character.isWhitespace;
+import static java.lang.Character.*;
 
 public class PasswordValidator {
     private static final String[] FORBIDDEN = {"qwerty", "12345", "password", "admin", "user"};
@@ -15,66 +15,48 @@ public class PasswordValidator {
             throw new IllegalArgumentException("Password should be length [8, 32]");
         }
 
-        if (!hasUpperCase(password)) {
+        char[] chars = password.toCharArray();
+        boolean hasUpperCase = false;
+        boolean hasLowerCase = false;
+        boolean hasDigit = false;
+        boolean hasSpecial = false;
+        boolean simple = false;
+        for (char aChar : chars) {
+            if (isUpperCase(aChar)) {
+                hasUpperCase = true;
+            }
+            if (isLowerCase(aChar)) {
+                hasLowerCase = true;
+            }
+            if (isDigit(aChar)) {
+                hasDigit = true;
+            }
+            if (!isLetterOrDigit(aChar) && !isWhitespace(aChar)) {
+                hasSpecial = true;
+            }
+        }
+        for (String simple2 : FORBIDDEN) {
+            if (password.toLowerCase().contains(simple2)) {
+                simple = true;
+                break;
+            }
+        }
+        if (!hasUpperCase) {
             throw new IllegalArgumentException("Password should contain at least one uppercase letter");
         }
-        if (!hasLowerCase(password)) {
+        if (!hasLowerCase) {
             throw new IllegalArgumentException("Password should contain at least one lowercase letter");
         }
-        if (!hasDigit(password)) {
+        if (!hasDigit) {
             throw new IllegalArgumentException("Password should contain at least one figure");
         }
-        if (!hasSpecial(password)) {
+        if (!hasSpecial) {
             throw new IllegalArgumentException("Password should contain at least one special symbol");
         }
-        if (!notSimple(password)) {
+        if (simple) {
             throw new IllegalArgumentException("Password shouldn't contain substrings: qwerty, 12345, password, admin, user");
         }
+
         return password;
-    }
-
-    private static boolean hasUpperCase(String password) {
-        for (char c : password.toCharArray()) {
-            if (Character.isUpperCase(c)) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    private static boolean hasLowerCase(String password) {
-        for (char c : password.toCharArray()) {
-            if (Character.isLowerCase(c)) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    private static boolean hasDigit(String password) {
-        for (char c : password.toCharArray()) {
-            if (Character.isDigit(c)) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    private static boolean hasSpecial(String password) {
-        for (char c : password.toCharArray()) {
-            if (!Character.isLetterOrDigit(c) && !isWhitespace(c)) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    public static boolean notSimple(String password) {
-        for (String simple : FORBIDDEN) {
-            if (password.toLowerCase().contains(simple)) {
-                return false;
-            }
-        }
-        return true;
     }
 }
