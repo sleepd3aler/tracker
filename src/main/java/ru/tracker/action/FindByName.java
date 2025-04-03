@@ -1,5 +1,6 @@
 package ru.tracker.action;
 
+import java.util.List;
 import ru.tracker.input.Input;
 import ru.tracker.Item;
 import ru.tracker.output.Output;
@@ -21,8 +22,8 @@ public class FindByName implements UserAction {
     public boolean execute(Input input, Tracker tracker) {
         output.println("=== Просмотр заявок ===");
         String currentName = input.askStr("Введите имя для поиска заявок: ");
-        Item[] foundedItems = tracker.findByName(currentName);
-        if (foundedItems.length == 0) {
+        List<Item> foundedItems = tracker.findByName(currentName);
+        if (foundedItems.size() == 0) {
             output.println("Заявки не найдены");
         } else {
             for (Item item : foundedItems) {

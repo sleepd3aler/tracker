@@ -1,5 +1,6 @@
 package ru.tracker.action;
 
+import java.util.List;
 import ru.tracker.input.Input;
 import ru.tracker.Item;
 import ru.tracker.output.Output;
@@ -20,8 +21,8 @@ public class FindAll implements UserAction {
     @Override
     public boolean execute(Input input, Tracker tracker) {
         output.println("=== Вывод всех заявок ===");
-        Item[] items = tracker.findAll();
-        if (items.length > 0) {
+        List<Item> items = tracker.findAll();
+        if (items.size() > 0) {
             for (Item item : items) {
                 output.println(item);
             }
