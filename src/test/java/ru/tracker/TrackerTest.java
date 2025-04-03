@@ -3,7 +3,7 @@ package ru.tracker;
 import java.util.List;
 import org.junit.Test;
 
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class TrackerTest {
     @Test
@@ -93,7 +93,7 @@ public class TrackerTest {
         tracker.add(item);
         int id = item.getId();
         tracker.delete(id);
-        assertThat(tracker.findAll().isEmpty()).isTrue();
+        assertThat(tracker.findAll()).isEmpty();
     }
 
     @Test
