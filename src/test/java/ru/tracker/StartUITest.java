@@ -23,7 +23,7 @@ class StartUITest {
                 new Exit(output),
         };
         new StartUI(output).init(input, tracker, actions);
-        assertThat(tracker.findAll()[0].getName()).isEqualTo("Item name");
+        assertThat(tracker.findAll().get(0).getName()).isEqualTo("Item name");
     }
 
     @Test
@@ -39,7 +39,7 @@ class StartUITest {
         };
         tracker.add(new Item("Item name"));
         new StartUI(output).init(input, tracker, actions);
-        assertThat(tracker.findAll()[0].getName()).isEqualTo("Replaced name");
+        assertThat(tracker.findAll().get(0).getName()).isEqualTo("Replaced name");
     }
 
     @Test
@@ -55,7 +55,7 @@ class StartUITest {
         };
         tracker.add(new Item("Item name"));
         new StartUI(output).init(input, tracker, actions);
-        assertThat(tracker.findAll()[0].getName()).isNotEqualTo("Replaced name");
+        assertThat(tracker.findAll().get(0).getName()).isNotEqualTo("Replaced name");
     }
 
     @Test
@@ -71,7 +71,7 @@ class StartUITest {
         };
         tracker.add(new Item("Item name"));
         new StartUI(output).init(input, tracker, actions);
-        assertThat(tracker.findAll().length).isZero();
+        assertThat(tracker.findAll().size()).isZero();
     }
 
     @Test
@@ -87,7 +87,7 @@ class StartUITest {
         };
         tracker.add(new Item("Item name"));
         new StartUI(output).init(input, tracker, actions);
-        assertThat(tracker.findAll().length).isNotZero();
+        assertThat(tracker.findAll().size()).isNotZero();
     }
 
     @Test
@@ -350,11 +350,11 @@ class StartUITest {
         String ln = System.lineSeparator();
         assertThat(output.toString()).isEqualTo(
                 "Меню:" + ln
-                         + "0. Завершить программу" + ln
-                         + "Неверный ввод, вы можете выбрать: 0 .. 0" + ln
-                         + "Меню:" + ln
-                         + "0. Завершить программу" + ln
-                         + "=== Завершение программы ===" + ln
+                        + "0. Завершить программу" + ln
+                        + "Неверный ввод, вы можете выбрать: 0 .. 0" + ln
+                        + "Меню:" + ln
+                        + "0. Завершить программу" + ln
+                        + "=== Завершение программы ===" + ln
         );
     }
 }
