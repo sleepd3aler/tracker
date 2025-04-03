@@ -1,5 +1,6 @@
 package ru.tracker.input;
 
+import java.util.List;
 import org.junit.jupiter.api.Test;
 import ru.tracker.output.MockOutput;
 import ru.tracker.output.Output;
@@ -13,7 +14,7 @@ class ValidateInputTest {
     void whenInvalidInput() {
        Output output = new MockOutput();
        Input in = new MockInput(
-               new String[] {"One", "1"}
+               List.of(new String[]{"One", "1"})
        );
        ValidateInput input = new ValidateInput(output, in);
        int selected = input.askInt("Enter menu:");
@@ -24,7 +25,7 @@ class ValidateInputTest {
     void whenValidInput() {
         Output output = new MockOutput();
         Input in = new MockInput(
-                new String[] {"1"}
+                List.of(new String[]{"1"})
         );
         ValidateInput input = new ValidateInput(output, in);
         int selected = input.askInt("Enter menu:");
@@ -35,7 +36,7 @@ class ValidateInputTest {
     void whenFewInput() {
         Output output = new MockOutput();
         Input in = new MockInput(
-                new String[] {"2", "3", "4", "5"}
+                List.of(new String[]{"2", "3", "4", "5"})
         );
         ValidateInput input = new ValidateInput(output, in);
         int selected = input.askInt("Enter menu:");
@@ -52,7 +53,7 @@ class ValidateInputTest {
     void whenNegativeInput() {
         Output output = new MockOutput();
         Input in = new MockInput(
-                new String[] {"-1"}
+                List.of(new String[]{"-1"})
         );
         ValidateInput input = new ValidateInput(output, in);
         int selected = input.askInt("Enter menu:");
