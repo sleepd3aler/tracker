@@ -1,5 +1,4 @@
 package ru.tracker.action;
-//
 
 import ru.tracker.Item;
 import ru.tracker.Tracker;

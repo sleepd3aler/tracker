@@ -1,5 +1,4 @@
 package ru.tracker;
-//
 
 import ru.tracker.action.*;
 import ru.tracker.input.ConsoleInput;
