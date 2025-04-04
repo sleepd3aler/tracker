@@ -14,7 +14,7 @@ class ValidateInputTest {
     void whenInvalidInput() {
        Output output = new MockOutput();
        Input in = new MockInput(
-               List.of(new String[]{"One", "1"})
+               List.of("One", "1")
        );
        ValidateInput input = new ValidateInput(output, in);
        int selected = input.askInt("Enter menu:");
@@ -25,7 +25,7 @@ class ValidateInputTest {
     void whenValidInput() {
         Output output = new MockOutput();
         Input in = new MockInput(
-                List.of(new String[]{"1"})
+                List.of("1")
         );
         ValidateInput input = new ValidateInput(output, in);
         int selected = input.askInt("Enter menu:");
@@ -36,7 +36,7 @@ class ValidateInputTest {
     void whenFewInput() {
         Output output = new MockOutput();
         Input in = new MockInput(
-                List.of(new String[]{"2", "3", "4", "5"})
+                List.of("2", "3", "4", "5")
         );
         ValidateInput input = new ValidateInput(output, in);
         int selected = input.askInt("Enter menu:");
@@ -53,7 +53,7 @@ class ValidateInputTest {
     void whenNegativeInput() {
         Output output = new MockOutput();
         Input in = new MockInput(
-                List.of(new String[]{"-1"})
+                List.of("-1")
         );
         ValidateInput input = new ValidateInput(output, in);
         int selected = input.askInt("Enter menu:");
