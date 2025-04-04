@@ -1,6 +1,5 @@
 package ru.tracker;
 
-import java.util.ArrayList;
 import java.util.List;
 import ru.tracker.action.*;
 import ru.tracker.input.ConsoleInput;
@@ -41,14 +40,11 @@ public class StartUI {
         Output output = new ConsoleOutput();
         Input input = new ValidateInput(output, new ConsoleInput());
         Tracker tracker = new Tracker();
-        List<UserAction> actions = new ArrayList<>();
-        actions.add(new Create(output));
-        actions.add(new FindAll(output));
-        actions.add(new Replace(output));
-        actions.add(new Delete(output));
-        actions.add(new FindById(output));
-        actions.add(new FindByName(output));
-        actions.add(new Exit(output));
+        List<UserAction> actions = List.of(
+                new Create(output), new FindAll(output), new Replace(output), new Delete(output), new FindById(output),
+                new FindByName(output), new Exit(output)
+        );
+
         new StartUI(output).init(input, tracker, actions);
 
     }
