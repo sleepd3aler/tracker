@@ -1,5 +1,6 @@
 package ru.collection;
 
+import java.util.Arrays;
 import java.util.HashSet;
 
 public class UniqueText {
@@ -7,13 +8,11 @@ public class UniqueText {
         boolean result = true;
         String[] origin = originText.split(" ");
         String[] duplicate = duplicateText.split(" ");
-        HashSet<String> check = new HashSet<>();
-        for (String s : origin) {
-            check.add(s);
-        }
+        HashSet<String> check = new HashSet<>(Arrays.asList(origin));
         for (String s : duplicate) {
             if (!check.contains(s)) {
                 result = false;
+                break;
             }
         }
         return result;
