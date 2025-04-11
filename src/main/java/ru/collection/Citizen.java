@@ -1,5 +1,5 @@
 package ru.collection;
-//
+
 import java.util.Objects;
 
 public class Citizen {
