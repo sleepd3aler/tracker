@@ -20,9 +20,9 @@ public class BankService {
     }
 
     public void addAccount(String passport, Account account) {
-       User current = findByPassport(passport);
-        if (current != null && !users.get(current).contains(account)) {
-            users.get(current).add(account);
+       User accountHolder = findByPassport(passport);
+        if (accountHolder != null && !users.get(accountHolder).contains(account)) {
+            users.get(accountHolder).add(account);
         }
     }
 
