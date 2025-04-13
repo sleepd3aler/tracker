@@ -36,12 +36,11 @@ public class BankService {
     }
 
     public Account findByRequisite(String passport, String requisite) {
-        for (User user : users.keySet()) {
-            if (user.getPassport().equals(passport)) {
-                for (Account account : users.get(user)) {
-                    if (account.getRequisite().equals(requisite)) {
-                        return account;
-                    }
+        User accountHolder = findByPassport(passport);
+        if (accountHolder != null) {
+            for (Account account : users.get(accountHolder)) {
+                if (account.getRequisite().equals(requisite)) {
+                    return account;
                 }
             }
         }
