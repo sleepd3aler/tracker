@@ -30,37 +30,24 @@ public class AnalyzeByMap {
 
     public static List<Label> averageScoreBySubject(List<Pupil> pupils) {
         List<Label> labels = new ArrayList<>();
-        Map<String, Integer> map = new LinkedHashMap<>();
-        for (Pupil pupil : pupils) {
-            for (Subject subject : pupil.subjects()) {
-                if (!map.containsKey(subject.name())) {
-                    map.put(subject.name(), subject.score());
-                } else {
-                    map.put(subject.name(), map.get(subject.name()) + subject.score());
-                }
-            }
-        }
-        for (Map.Entry<String, Integer> entry : map.entrySet()) {
+        Map<String, Integer> subjectTotals = toMap(pupils);
+        for (Map.Entry<String, Integer> entry : subjectTotals.entrySet()) {
             labels.add(new Label(entry.getKey(), (double) entry.getValue() / pupils.size()));
         }
         return labels;
     }
 
-    public static Label bestStudent(List<Pupil> pupils) {
-        List<Label> students = new ArrayList<>();
-        for (Pupil pupil : pupils) {
-            double studentScore = 0;
-            for (Subject subject : pupil.subjects()) {
-                studentScore += subject.score();
-            }
-            students.add(new Label(pupil.name(), studentScore));
-        }
-        students.sort(Comparator.naturalOrder());
-        return students.get(students.size() - 1);
-    }
-
     public static Label bestSubject(List<Pupil> pupils) {
         List<Label> subjects = new ArrayList<>();
+        Map<String, Integer> subjectTotals = toMap(pupils);
+        for (Map.Entry<String, Integer> entry : subjectTotals.entrySet()) {
+            subjects.add(new Label(entry.getKey(), entry.getValue()));
+        }
+        subjects.sort(Comparator.naturalOrder());
+        return subjects.get(subjects.size() - 1);
+    }
+
+    private static Map<String, Integer> toMap(List<Pupil> pupils) {
         Map<String, Integer> map = new LinkedHashMap<>();
         for (Pupil pupil : pupils) {
             for (Subject subject : pupil.subjects()) {
@@ -71,10 +58,19 @@ public class AnalyzeByMap {
                 }
             }
         }
-        for (Map.Entry<String, Integer> entry : map.entrySet()) {
-            subjects.add(new Label(entry.getKey(), entry.getValue()));
+        return map;
     }
-        subjects.sort(Comparator.naturalOrder());
-        return subjects.get(subjects.size() - 1);
-}
+
+    public static Label bestStudent(List<Pupil> pupils) {
+        List<Label> score = new ArrayList<>();
+        for (Pupil pupil : pupils) {
+            double studentScore = 0;
+            for (Subject subject : pupil.subjects()) {
+                studentScore += subject.score();
+            }
+            score.add(new Label(pupil.name(), studentScore));
+        }
+        score.sort(Comparator.naturalOrder());
+        return score.get(score.size() - 1);
+    }
 }
