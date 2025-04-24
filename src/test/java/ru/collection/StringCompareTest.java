@@ -85,11 +85,21 @@ public class StringCompareTest {
     }
 
     @Test
-    public void whenFirstStringIsEmptyThenPositive() {
+    public void whenFirstStringIsEmptyThenNegative() {
         StringCompare compare = new StringCompare();
         int result = compare.compare(
                 "",
                 "Hello World"
+        );
+        assertThat(result).isLessThan(0);
+    }
+
+    @Test
+    public void whenFirstStringLengthIsGreaterThenShouldBePositive() {
+        StringCompare compare = new StringCompare();
+        int result = compare.compare(
+                "aaa",
+                "aa"
         );
         assertThat(result).isGreaterThan(0);
     }
