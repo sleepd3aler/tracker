@@ -41,7 +41,7 @@ public class Account {
     /**
      * Метод позволяет получить текущий баланс Аккаунта
      *
-     * @return - возвращает реквизиты
+     * @return - возвращает баланс
      */
     public double getBalance() {
         return balance;
