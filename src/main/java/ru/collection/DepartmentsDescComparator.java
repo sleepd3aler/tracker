@@ -1,5 +1,5 @@
 package ru.collection;
-//
+
 import java.util.Comparator;
 
 public class DepartmentsDescComparator implements Comparator<String> {

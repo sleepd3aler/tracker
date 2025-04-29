@@ -1,5 +1,5 @@
 package ru.collection;
-//
+
 import java.util.Arrays;
 import java.util.List;
 
