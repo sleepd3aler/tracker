@@ -1,8 +1,6 @@
 package ru.function;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.function.*;
 
 public class FunctionalInterfaceUsage {
@@ -51,5 +49,13 @@ public class FunctionalInterfaceUsage {
                 )
         );
 
+        String[] names = {"Ivan"};
+        Comparator<String> lengthComparator = (first, second) -> {
+            System.out.println("execute comparator");
+            return Integer.compare(first.length(), second.length());
+        };
+        Arrays.sort(names, lengthComparator);
+        names = new String[]{"Ivan", "Bolvan"};
+        Arrays.sort(names, lengthComparator);
     }
 }
