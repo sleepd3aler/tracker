@@ -1,9 +1,6 @@
 package ru.bank;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Класс описывает работу банковского сервиса
@@ -14,7 +11,8 @@ import java.util.Map;
  * @author Novitskiy Alexander
  * @version 1.0
  */
-public class BankService {
+public class
+BankService {
     /**
      * Хранение пользователей и списка их аккаунтов осуществляется в коллекции типа Map
      */
@@ -33,8 +31,8 @@ public class BankService {
      * @param passport - паспорт пользователя
      */
     public void deleteUser(String passport) {
-        User delete = findByPassport(passport);
-        if (delete != null) {
+        Optional<User> delete = findByPassport(passport);
+        if (delete.isEmpty()) {
             users.remove(delete);
         }
     }
@@ -45,7 +43,7 @@ public class BankService {
      * @param account - аккаунт пользователя
      */
     public void addAccount(String passport, Account account) {
-       User accountHolder = findByPassport(passport);
+      Optional<User>  accountHolder = findByPassport(passport);
         if (accountHolder != null && !users.get(accountHolder).contains(account)) {
             users.get(accountHolder).add(account);
         }
@@ -56,13 +54,15 @@ public class BankService {
      * @param passport  - паспорт пользователя
      * @return объект пользователя, или null если его нет в карте
      */
-    public User findByPassport(String passport) {
+    public Optional<User> findByPassport(String passport) {
+        Optional<User> result = Optional.empty();
         for (User user : users.keySet()) {
             if (user.getPassport().equals(passport)) {
-                return user;
+                result = Optional.of(user);
+                break;
             }
         }
-        return null;
+        return result;
     }
 
     /**
@@ -72,8 +72,8 @@ public class BankService {
      * @return - объект аккаунта или null, если его нет в карте
      */
     public Account findByRequisite(String passport, String requisite) {
-        User accountHolder = findByPassport(passport);
-        if (accountHolder != null) {
+        Optional<User> accountHolder = findByPassport(passport);
+        if (accountHolder.isEmpty()) {
             for (Account account : users.get(accountHolder)) {
                 if (account.getRequisite().equals(requisite)) {
                     return account;
@@ -115,5 +115,12 @@ public class BankService {
      */
     public List<Account> getAccounts(User user) {
         return users.get(user);
+    }
+
+    public static void main(String[] args) {
+        BankService bank = new BankService();
+        bank.addUser(new User("321", "Petr Petrov"));
+        Optional<User> optional = bank.findByPassport("3211");
+        optional.ifPresent(System.out::println);
     }
 }
