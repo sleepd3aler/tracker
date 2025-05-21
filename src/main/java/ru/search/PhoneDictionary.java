@@ -13,7 +13,7 @@ public class PhoneDictionary {
     public ArrayList<Person> find(String key) {
         Predicate<Person> combine = person -> person.getName().contains(key) || person.getSurname().contains(key)
                 || person.getPhone().contains(key) || person.getAdress().contains(key);
-        ArrayList<Person> result = new ArrayList<>();
+        var result = new ArrayList<Person>();
         persons.forEach(person -> {
             if (combine.test(person)) {
                 result.add(person);
