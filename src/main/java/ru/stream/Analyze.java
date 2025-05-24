@@ -44,7 +44,7 @@ public class Analyze {
     public static Tuple bestSubject(Stream<Pupil> stream) {
         Map<String, Integer> subjects = subjectsTotalScore(stream);
         return subjects.entrySet().stream()
-                .sorted(Map.Entry.comparingByValue(Comparator.naturalOrder()))
+                .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
                 .map(subject -> new Tuple(subject.getKey(), subject.getValue()))
                 .max(Comparator.comparing(Tuple::score))
                 .get();
@@ -52,8 +52,7 @@ public class Analyze {
 
     private static Map<String, Integer> subjectsTotalScore(Stream<Pupil> stream) {
         return stream
-                .flatMap(pupil -> pupil.subjects().stream()).toList()
-                .stream()
+                .flatMap(pupil -> pupil.subjects().stream())
                 .collect(Collectors.toMap(Subject::name,
                         Subject::score,
                         Integer::sum));
