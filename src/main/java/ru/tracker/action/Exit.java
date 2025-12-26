@@ -1,8 +1,8 @@
 package ru.tracker.action;
 
+import ru.tracker.Store;
 import ru.tracker.input.Input;
 import ru.tracker.output.Output;
-import ru.tracker.Tracker;
 
 public class Exit implements UserAction {
     private final Output output;
@@ -17,7 +17,7 @@ public class Exit implements UserAction {
     }
 
     @Override
-    public boolean execute(Input input, Tracker tracker) {
+    public boolean execute(Input input, Store store) {
         output.println("=== Завершение программы ===");
         return false;
     }

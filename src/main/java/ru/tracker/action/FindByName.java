@@ -1,10 +1,10 @@
 package ru.tracker.action;
 
 import java.util.List;
+import ru.tracker.Store;
 import ru.tracker.input.Input;
 import ru.tracker.Item;
 import ru.tracker.output.Output;
-import ru.tracker.Tracker;
 
 public class FindByName implements UserAction {
     private final Output output;
@@ -19,11 +19,11 @@ public class FindByName implements UserAction {
     }
 
     @Override
-    public boolean execute(Input input, Tracker tracker) {
+    public boolean execute(Input input, Store tracker) {
         output.println("=== Просмотр заявок ===");
         String currentName = input.askStr("Введите имя для поиска заявок: ");
         List<Item> foundedItems = tracker.findByName(currentName);
-        if (foundedItems.size() == 0) {
+        if (foundedItems.isEmpty()) {
             output.println("Заявки не найдены");
         } else {
             for (Item item : foundedItems) {

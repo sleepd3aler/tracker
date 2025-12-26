@@ -3,7 +3,7 @@ package ru.tracker;
 import java.util.List;
 
 public final class SingleTracker {
-    private Tracker tracker = new Tracker();
+    private MemTracker memTracker = new MemTracker();
     private static SingleTracker instance = null;
 
     private SingleTracker() {
@@ -18,27 +18,27 @@ public final class SingleTracker {
     }
 
     public Item add(Item item) {
-        return this.tracker.add(item);
+        return this.memTracker.add(item);
     }
 
     public boolean replace(int id, Item item) {
-        return this.tracker.replace(id, item);
+        return this.memTracker.replace(id, item);
     }
 
     public void delete(int id) {
-        this.tracker.delete(id);
+        this.memTracker.delete(id);
     }
 
     public Item findById(int id) {
-        return this.tracker.findById(id);
+        return this.memTracker.findById(id);
     }
 
     public List<Item> findByName(String name) {
-        return this.tracker.findByName(name);
+        return this.memTracker.findByName(name);
     }
 
     public List<Item> findAll() {
-        return this.tracker.findAll();
+        return this.memTracker.findAll();
     }
 
 }

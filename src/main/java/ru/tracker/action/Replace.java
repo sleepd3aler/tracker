@@ -1,9 +1,9 @@
 package ru.tracker.action;
 
-import ru.tracker.input.Input;
 import ru.tracker.Item;
+import ru.tracker.Store;
+import ru.tracker.input.Input;
 import ru.tracker.output.Output;
-import ru.tracker.Tracker;
 
 public class Replace implements UserAction {
     private final Output output;
@@ -18,7 +18,7 @@ public class Replace implements UserAction {
     }
 
     @Override
-    public boolean execute(Input input, Tracker tracker) {
+    public boolean execute(Input input, Store tracker) {
         output.println("=== Редактирование заявки ===");
         int id = input.askInt("Введите ID заявки:");
         String newName = input.askStr("Введите имя новой заявки:");

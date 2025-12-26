@@ -1,7 +1,7 @@
 package ru.tracker.action;
 
 import ru.tracker.Item;
-import ru.tracker.Tracker;
+import ru.tracker.Store;
 import ru.tracker.input.Input;
 import ru.tracker.output.Output;
 
@@ -18,7 +18,7 @@ public class FindById implements UserAction {
     }
 
     @Override
-    public boolean execute(Input input, Tracker tracker) {
+    public boolean execute(Input input, Store tracker) {
         output.println("=== Просмотр заявки ===");
         int currentId = input.askInt("Введите id заявки для просмотра заявки: ");
         Item currentItem = tracker.findById(currentId);
