@@ -108,7 +108,7 @@ public class SqlTrackerTest {
                 tracker.findById(first.getId()),
                 tracker.findById(second.getId())
         );
-        tracker.delete(3);
+        tracker.delete(third.getId());
         assertThat(tracker.findAll()).isEqualTo(expected);
     }
 
