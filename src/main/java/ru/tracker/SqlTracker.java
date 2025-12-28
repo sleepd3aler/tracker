@@ -11,6 +11,10 @@ public class SqlTracker implements Store {
 
     private Connection connection;
 
+    public SqlTracker(Connection connection) {
+        this.connection = connection;
+    }
+
     public SqlTracker() {
         try {
             init();
@@ -114,7 +118,7 @@ public class SqlTracker implements Store {
     }
 
     private void init() {
-        try (InputStream input = SqlTracker.class.getClassLoader().getResourceAsStream("liquibase.properties")) {
+        try (InputStream input = SqlTracker.class.getClassLoader().getResourceAsStream("db/liquibase.properties")) {
             Properties config = new Properties();
             config.load(input);
             Class.forName(config.getProperty("driver-class-name"));
