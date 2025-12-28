@@ -31,8 +31,13 @@ public class SqlTrackerTest {
                     config.getProperty("url"),
                     config.getProperty("username"),
                     config.getProperty("password")
-
             );
+            try (PreparedStatement statement = connection.prepareStatement(
+                    "create table  if not exists items (id serial primary key, name text, creation_time timestamp)"
+            )) {
+                statement.execute();
+            }
+
         } catch (Exception e) {
             throw new IllegalStateException(e);
         }
@@ -118,7 +123,7 @@ public class SqlTrackerTest {
     }
 
     @Test
-    public void  whenFindByIllegalNameThenResultIsEmpty() {
+    public void whenFindByIllegalNameThenResultIsEmpty() {
         assertThat(tracker.findByName("first")).isEmpty();
     }
 }
