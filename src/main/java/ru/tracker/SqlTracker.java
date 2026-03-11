@@ -46,8 +46,7 @@ public class SqlTracker implements Store {
     public boolean replace(int id, Item item) {
         boolean res;
         try (PreparedStatement statement = connection.prepareStatement(
-                "UPDATE items set name = ? , creation_time = ? where id = ?;"
-        )) {
+                "UPDATE items set name = ? , creation_time = ? where id = ?;")) {
             statement.setString(1, item.getName());
             statement.setTimestamp(2, Timestamp.valueOf(item.getCreated()));
             statement.setInt(3, id);
@@ -61,8 +60,7 @@ public class SqlTracker implements Store {
     @Override
     public void delete(int id) {
         try (PreparedStatement statement = connection.prepareStatement(
-                "DELETE FROM items WHERE ID = ?;"
-        )) {
+                "DELETE FROM items WHERE ID = ?;")) {
             statement.setInt(1, id);
             statement.executeUpdate();
         } catch (SQLException e) {
@@ -73,8 +71,7 @@ public class SqlTracker implements Store {
     @Override
     public List<Item> findAll() {
         try (PreparedStatement statement = connection.prepareStatement(
-                "select * from items;"
-        )) {
+                "select * from items;")) {
             return getItems(statement);
         } catch (Exception e) {
             throw new RuntimeException(e);
@@ -85,8 +82,7 @@ public class SqlTracker implements Store {
     @Override
     public List<Item> findByName(String key) {
         try (PreparedStatement statement = connection.prepareStatement(
-                "select * from items where name = ?;"
-        )) {
+                "select * from items where name = ?;")) {
             statement.setString(1, key);
             return getItems(statement);
         } catch (SQLException e) {
@@ -97,8 +93,7 @@ public class SqlTracker implements Store {
     @Override
     public Item findById(int id) {
         try (PreparedStatement statement = connection.prepareStatement(
-                "select * from items where id = ?;"
-        )) {
+                "select * from items where id = ?;")) {
             statement.setInt(1, id);
             List<Item> items = getItems(statement);
             if (!items.isEmpty()) {
@@ -113,8 +108,7 @@ public class SqlTracker implements Store {
     @Override
     public void deleteAllItems() {
         try (PreparedStatement statement = connection.prepareStatement(
-                "delete from items"
-        )) {
+                "delete from items")) {
             statement.executeQuery();
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -133,7 +127,8 @@ public class SqlTracker implements Store {
             Properties config = new Properties();
             config.load(input);
             Class.forName(config.getProperty("driver-class-name"));
-            connection = DriverManager.getConnection(config.getProperty("url"), config.getProperty("username"), config.getProperty("password"));
+            connection = DriverManager.getConnection(config.getProperty("url"), config.getProperty("username"),
+                    config.getProperty("password"));
         } catch (Exception e) {
             throw new IllegalStateException(e);
         }

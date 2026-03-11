@@ -23,8 +23,7 @@ public class CreateManyItems implements UserAction {
         int amount = input.askInt("Введите колличество заявок: ");
         for (int i = 0; i < amount; i++) {
             tracker.add(
-                    new Item(i, "N : " + i)
-            );
+                    new Item(i, "N : " + i));
         }
         output.println("== Добавлено: " + amount + " заявок ==");
         return true;

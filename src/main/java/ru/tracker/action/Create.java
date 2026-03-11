@@ -14,7 +14,7 @@ public class Create implements UserAction {
 
     @Override
     public String name() {
-        return "Добавить новую заявку.";
+        return "Добавить новую заявку";
     }
 
     @Override
