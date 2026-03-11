@@ -111,6 +111,17 @@ public class SqlTracker implements Store {
     }
 
     @Override
+    public void deleteAllItems() {
+        try (PreparedStatement statement = connection.prepareStatement(
+                "delete from items"
+        )) {
+            statement.executeQuery();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
     public void close() throws Exception {
         if (connection != null) {
             connection.close();
@@ -141,4 +152,5 @@ public class SqlTracker implements Store {
         }
         return res;
     }
+
 }

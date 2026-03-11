@@ -61,6 +61,14 @@ public class MemTracker implements Store {
     }
 
     @Override
+    public void deleteAllItems() {
+        for (int i = 0; i < items.size(); i++) {
+            items.remove(i);
+            i--;
+        }
+    }
+
+    @Override
     public void close() throws Exception {
 
     }
